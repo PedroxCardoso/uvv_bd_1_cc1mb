@@ -1,6 +1,8 @@
 
 CREATE DATABASE uvv;
 
+-- criação da tabela funcionário, onde a PK é CPF.
+
 CREATE TABLE funcionario (
                 cpf CHAR(11) NOT NULL,
                 primeiro_nome VARCHAR(15) NOT NULL,
@@ -15,6 +17,7 @@ CREATE TABLE funcionario (
                 PRIMARY KEY (cpf)
 );
 
+-- criação da tabela departamento, onde a PK é NUMERO_DEPARTAMENTO.
 
 CREATE TABLE departamento (
                 numero_departamento INT NOT NULL,
@@ -29,6 +32,8 @@ CREATE UNIQUE INDEX departamento_idx
  ON departamento
  ( nome_departamento );
 
+-- criação da tabela projeto, onde PK é NUMERO_PROJETO.
+
 CREATE TABLE projeto (
                 numero_projeto INT NOT NULL,
                 nome_projeto VARCHAR(15) NOT NULL,
@@ -42,6 +47,8 @@ CREATE UNIQUE INDEX projeto_idx
  ON projeto
  ( nome_projeto );
 
+-- Criação da tabela trabalha_em onde as PK são CPF_FUNCIONARIO e NUMERO_PROJETO.
+
 CREATE TABLE trabalha_em (
                 cpf_funcionario CHAR(11) NOT NULL,
                 numero_projeto INT NOT NULL,
@@ -49,6 +56,7 @@ CREATE TABLE trabalha_em (
                 PRIMARY KEY (cpf_funcionario, numero_projeto)
 );
 
+-- criação da tabela localizacoes_departamento, onde as PK são NUMERO_DEPARTAMENTOe LOCAL.
 
 CREATE TABLE localizacoes_departamento (
                 numero_departamento INT NOT NULL,
@@ -56,6 +64,7 @@ CREATE TABLE localizacoes_departamento (
                 PRIMARY KEY (numero_departamento, local)
 );
 
+-- Criação da tabela dependente, onde as PK são CPF_FUNCIONARIO e NOME_DEPENDENTE.
 
 CREATE TABLE dependente (
                 cpf_funcionario CHAR(11) NOT NULL,
@@ -66,6 +75,7 @@ CREATE TABLE dependente (
                 PRIMARY KEY (cpf_funcionario, nome_dependente)
 );
 
+-- Criação das FK, relacionando-as.
 
 ALTER TABLE funcionario ADD CONSTRAINT funcionario_funcionario_fk
 FOREIGN KEY (cpf_supervisor)
@@ -109,6 +119,7 @@ REFERENCES projeto (numero_projeto)
 ON DELETE NO ACTION
 ON UPDATE NO ACTION;
 
+-- INSERÇÃO DOS VALORES.
 
 INSERT INTO funcionario(cpf, primeiro_nome, nome_meio, ultimo_nome, data_nascimento, endereco, sexo, salario, cpf_supervisor, numero_departamento)
 VALUES('12345678966', 'João', 'B', 'Silva', '1965-01-09', 'Rua das Flores,751, São Paulo, SP', 'M', 30000.0, '33344555587', 5);
