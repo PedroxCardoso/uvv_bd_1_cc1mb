@@ -4,7 +4,7 @@ CREATE SCHEMA elmasri AUTHORIZATION pedro;
 
 -- DROP TYPE elmasri.departamento;
 
-
+-- criação das tabelas com seus valores.
 
 CREATE TYPE elmasri.departamento AS (
 	numero_departamento int4,
@@ -201,6 +201,8 @@ CREATE TABLE elmasri.dependente (
 
 -- DROP TABLE elmasri.localizacoes_departamento;
 
+-- Aqui há as constraint com as suas foreign keys.
+
 CREATE TABLE elmasri.localizacoes_departamento (
 	numero_departamento int4 NOT NULL,
 	"local" varchar(15) NOT NULL,
@@ -214,6 +216,8 @@ CREATE TABLE elmasri.localizacoes_departamento (
 -- Drop table
 
 -- DROP TABLE elmasri.projeto;
+
+-- foreign key e referencia tabelas.
 
 CREATE TABLE elmasri.projeto (
 	numero_projeto int4 NOT NULL,
@@ -242,7 +246,7 @@ CREATE TABLE elmasri.trabalha_em (
 );
 
 
-
+-- inserção dos valores nas tabelas.
 
 
 INSERT INTO elmasri.dependente
