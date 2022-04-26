@@ -17,6 +17,8 @@ CREATE TABLE funcionario (
                 PRIMARY KEY (cpf)
 );
 
+/* a tabela funcionario será a tabela pai, onde estará ligada a dependente, trabalha_em, departamento e ela mesma. */
+
 -- criação da tabela departamento, onde a PK é NUMERO_DEPARTAMENTO.
 
 CREATE TABLE departamento (
@@ -138,6 +140,7 @@ VALUES('98798798733', 'André', 'V', 'Pereira', '1969-03-29', 'Rua Timbira, 35, 
 INSERT INTO funcionario(cpf, primeiro_nome, nome_meio, ultimo_nome, data_nascimento, endereco, sexo, salario, cpf_supervisor, numero_departamento)
 VALUES('88866555576', 'Jorge', 'E', 'Brito', '1937-11-10', 'Rua do Horto, 35, São Paulo, SP', 'M', 55000.00, 'NULL', 1);
 
+/* os valores da tabela FUNCIONARIO são inseridos no código. */
 
 INSERT INTO dependente(cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco)
 VALUES('33344555587', 'Alicia', 'F', '1986-04-05', 'Filha');
@@ -154,7 +157,7 @@ VALUES('12345678966', 'Alicia', 'F', '1988-12-30', 'Filha');
 INSERT INTO dependente(cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco)
 VALUES('12345678966', 'Elizabeth', 'F', '1967-05-05', 'Esposa');
 
-
+/* os valores da tabela DEPENDENTE são inseridos no código. */
 
 INSERT INTO departamento(nome_departamento, numero_departamento, cpf_gerente, data_inicio_gerente)
 VALUES('Pesquisa', 5, '33344555587', '1988-05-22');
@@ -163,6 +166,7 @@ VALUES('Administração', 4, '98765432168', '1995-01-01');
 INSERT INTO departamento(nome_departamento, numero_departamento, cpf_gerente, data_inicio_gerente)
 VALUES('Matriz', 1, '88866555576', '1981-06-19');
 
+/* os valores da tabela LOCALIZACAO_DEPARTAMENTO são inseridos no código. */
 
 INSERT INTO localizacao_departamento(numero_departamento, `local`)
 VALUES(1, 'São Paulo');
@@ -175,6 +179,7 @@ VALUES(5, 'Itu');
 INSERT INTO localizacao_departamento(numero_departamento, `local`)
 VALUES(5, 'São Paulo');
 
+/* os valores da tabela PROJETO são inseridos no código. */
 
 INSERT INTO projeto(numero_projeto, nome_projeto, local_projeto, numero_departamento)
 VALUES(1, 'ProdutoX', 'Santo André', 5);
@@ -188,6 +193,8 @@ INSERT INTO projeto(numero_projeto, nome_projeto, local_projeto, numero_departam
 VALUES(20, 'Reorganização', 'São Paulo', 1);
 INSERT INTO projeto(numero_projeto, nome_projeto, local_projeto, numero_departamento)
 VALUES(30, 'Novosbenefícios', 'Mauá', 4);
+
+/* os valores da tabela TRABALHA_EM são inseridos no código. */
 
 INSERT INTO trabalha_em(cpf_funcionario, numero_projeto, horas)
 VALUES('12345678966', 1, 32.5);
