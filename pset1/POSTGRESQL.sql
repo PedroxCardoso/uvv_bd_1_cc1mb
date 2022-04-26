@@ -12,6 +12,8 @@ CREATE TYPE elmasri.departamento AS (
 	cpf_gerente bpchar(11),
 	data_inicio_gerente date);
 
+/* inserção dos tipos de dados nos quais serão inseridos os valores. */
+
 -- DROP TYPE elmasri.dependente;
 
 CREATE TYPE elmasri.dependente AS (
@@ -160,6 +162,7 @@ CREATE TABLE elmasri.funcionario (
 	CONSTRAINT funcionario_funcionario_fk FOREIGN KEY (cpf_supervisor) REFERENCES elmasri.funcionario(cpf)
 );
 
+/* inserção das constraint (FK e relações) da tabela funcionario. */
 
 -- elmasri.departamento definition
 
@@ -177,6 +180,7 @@ CREATE TABLE elmasri.departamento (
 );
 CREATE UNIQUE INDEX departamento_idx ON elmasri.departamento USING btree (nome_departamento);
 
+/* relação entre a tabela departamento e funcionario. */
 
 -- elmasri.dependente definition
 
@@ -271,7 +275,7 @@ INSERT INTO elmasri.dependente
        (cpf_funcionario, nome_dependente, sexo, data_nascimento, parentesco)
        VALUES('12345678966', 'Elizabeth', 'F', '1967-05-05', 'Esposa');
 
-
+/* os valores da tabela dependente são inseridos de acordo com o tipo de dados. */
 
 INSERT INTO elmasri.departamento
       (nome_departamento, numero_departamento, cpf_gerente, data_inicio_gerente)
@@ -283,7 +287,7 @@ INSERT INTO elmasri.departamento
       (nome_departamento, numero_departamento, cpf_gerente, data_inicio_gerente)
       VALUES('Matriz', 1, '88866555576', '1981-06-19');
 
-
+/* os valores da tabela departamento são inseridos de acordo com o tipo de dados. */
 
 INSERT INTO elmasri.localizacao_departamento
       (numero_departamento, `local`)
@@ -370,6 +374,7 @@ INSERT INTO elmasri.trabalha_em
         (cpf_funcionario, numero_projeto, horas)
         VALUES('88866555576', 20, NULL);
 
+/* os valores da tabela trabalha_em são inseridos de acordo com o tipo de dados. */
 
 INSERT INTO elmasri.funcionario
          (cpf, primeiro_nome, nome_meio, ultimo_nome, data_nascimento, endereco, sexo, salario, cpf_supervisor, numero_departamento)
@@ -396,7 +401,7 @@ INSERT INTO elmasri.funcionario
          (cpf, primeiro_nome, nome_meio, ultimo_nome, data_nascimento, endereco, sexo, salario, cpf_supervisor, numero_departamento)
          VALUES('88866555576', 'Jorge', 'E', 'Brito', '1937-11-10', 'Rua do Horto, 35, São Paulo, SP', 'M', 55000.00, 'NULL', 1);
 
-
+/* e por fim, os valores da tabela funcionario são inseridos de acordo com o tipo de dados, com valores ligados a outra tabelas. */
 
 
 
