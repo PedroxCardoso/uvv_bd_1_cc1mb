@@ -9,6 +9,10 @@ GROUP BY departamento.nome_departamento
 /* Questão 2 - Prepare um relatório que mostre a média salarial dos homens e das
 mulheres. */
 
+SELECT AVG(salario) AS media_salarial, funcionario.sexo
+FROM funcionario
+GROUP BY funcionario.sexo
+
 /* QUESTÃO 03: prepare um relatório que liste o nome dos departamentos e, para
 cada departamento, inclua as seguintes informações de seus funcionários: o nome
 completo, a data de nascimento, a idade em anos completos e o salário. */
