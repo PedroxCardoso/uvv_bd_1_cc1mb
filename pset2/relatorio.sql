@@ -57,18 +57,17 @@ ORDER BY d.nome_departamento ASC, f.salario DESC;
 
 -- Questão 6.
 
-SELECT CONCAT (f.primeiro_nome, ' ', f.nome_meio, ' ', f.ultimo_nome) AS nome_funcionario,
-dn.nome_dependente,
-d.nome_departamento,
-timestampdiff(YEAR, dn.data_nascimento, curdate()) AS idade_dependente,
-(CASE
-WHEN (dn.sexo = 'M') THEn 'Masculino'
-ELSE 'Feminino'
+SELECT d.nome_departamento,
+CONCAT (f.primeiro_nome, ' ', f.nome_meio, ' ', f.ultimo_nome) AS nome_funcionario,
+CONCAT (dn.nome_dependente, ' ', f.nome_meio, ' ', f.ultimo_nome) AS nome_dependente,
+TIMESTAMPDIFF(YEAR, dn.data_nascimento, NOW()) AS idade_dependente,
+(case
+when (dn.sexo = 'M') then 'Masculino'
+ELSE 'feminino'
 END) AS sexo_dependente
 FROM departamento d
-INNER JOIN funcionario f
-ON f.numero_departamento = d.numero_departamento
-INNER JOIN dependente dn ON dn.cpf_funcionario = f.cpf;
+INNER JOIN funcionario f ON (f.numero_departamento = d.numero_departamento)
+INNER JOIN dependente dn ON (dn.cpf_funcionario = f.cpf);
 
 -- Questão 7.
 
